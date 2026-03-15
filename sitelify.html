@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitelify.in | Building Amazing, Productive Websites</title>
+    <meta name="description" content="We build high-performance, SEO-optimized websites for startups and corporates.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb', /* Primary Blue */
+                            700: '#1d4ed8', /* Darker Blue */
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .lg\:pt-40 {
+            padding-top: 8.5rem !important;
+        }
+
+        /* .bor-rad-23 {
+            border-radius: 23px;
+        } */
+
+        @media screen and (max-width: 600px) {
+            .aspect-crop {
+                aspect-ratio:16 / 17;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-600 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-slate-900 tracking-tight">
+                        Sitelify<span class="text-brand-600">.in</span>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-slate-600 hover:text-brand-600 font-medium transition">Home</a>
+                    <a href="#features" class="text-slate-600 hover:text-brand-600 font-medium transition">Why Us</a>
+                    <a href="#services" class="text-slate-600 hover:text-brand-600 font-medium transition">Services</a>
+                    <a href="#process" class="text-slate-600 hover:text-brand-600 font-medium transition">Process</a>
+                    <a href="#contact"
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg font-semibold transition shadow-lg shadow-brand-600/20">
+                        Get Started
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-brand-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 p-4 space-y-4">
+            <a href="#home" class="block text-slate-600 font-medium">Home</a>
+            <a href="#features" class="block text-slate-600 font-medium">Why Us</a>
+            <a href="#services" class="block text-slate-600 font-medium">Services</a>
+            <a href="#contact" class="block text-brand-600 font-bold">Get Started</a>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-brand-50 to-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12">
+
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <div
+                    class="inline-block bg-brand-100 text-brand-700 font-semibold px-4 py-1.5 rounded-full text-sm mb-6">
+                    🚀 Elevate your digital presence
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                    We Build Amazing, <span class="text-brand-600">Productive Websites</span> for Your Business.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0">
+                    Stop losing customers to slow, outdated designs. <br>We craft high-performance websites that look
+                    great,
+                    load fast, and convert visitors into paying clients.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#contact"
+                        class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 rounded-lg font-bold text-lg transition shadow-xl shadow-brand-600/30">
+                        Book Consultation
+                    </a>
+                    <!-- <a href="#portfolio"
+                        class="bg-white border border-slate-300 hover:border-brand-600 text-slate-700 hover:text-brand-600 px-8 py-3.5 rounded-lg font-bold text-lg transition">
+                        View Our Work 
+                    </a> -->
+                </div>
+                <div
+                    class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500 font-medium">
+                    <span class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-1" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg> 100% Responsive</span>
+                    <span class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-1" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg> SEO Ready</span>
+                            <span class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-1" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd"></path>
+                        </svg> 100% User Friendly</span>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2 relative">
+                <div class="absolute -inset-4 bg-brand-600/10 rounded-2xl blur-2xl transform rotate-3"></div>
+                <!-- <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Web Development Coding"
+                    class="relative rounded-2xl shadow-2xl border border-slate-200 w-full object-cover"> -->
+                <img src="/sitelify//11250233_1249.jpg" class="bor-rad-23   aspect-crop">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Why Businesses Trust Sitelify</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">We don't just write code; we build digital assets
+                    designed to grow your revenue.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-brand-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Blazing Fast Performance</h3>
+                    <p class="text-slate-600">Speed matters. We optimize every line of code to ensure your site loads
+                        instantly, keeping users engaged and reducing bounce rates.</p>
+                </div>
+
+                <div
+                    class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-brand-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">SEO Optimized Core</h3>
+                    <p class="text-slate-600">Built with search engines in mind. Semantic HTML and structured data
+                        ensure you rank higher on Google from day one.</p>
+                </div>
+
+                <div
+                    class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300">
+                    <div class="w-14 h-14 bg-brand-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Mobile-First Design</h3>
+                    <p class="text-slate-600">Over 70% of traffic is mobile. We ensure your site looks and works
+                        perfectly on every device, from iPhones to large desktops.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Expertise That Drives Results</h2>
+                    <p class="text-slate-400 text-lg">Whether you need a simple landing page or a complex web
+                        application, our team has the tech stack to handle it.</p>
+                </div>
+                <a href="#contact" class="text-brand-600 hover:text-brand-500 font-semibold flex items-center gap-2">
+                    See full service list <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-800 p-6 rounded-xl hover:bg-slate-700 transition cursor-pointer group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition duration-300">🎨</div>
+                    <h3 class="text-xl font-bold mb-2">Web Design</h3>
+                    <p class="text-slate-400 text-sm">UI/UX design that captures your brand identity and guides users to
+                        convert.</p>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-xl hover:bg-slate-700 transition cursor-pointer group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition duration-300">💻</div>
+                    <h3 class="text-xl font-bold mb-2">Custom Development</h3>
+                    <p class="text-slate-400 text-sm">Tailor-made solutions using React, Node.js, and modern tech
+                        stacks.</p>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-xl hover:bg-slate-700 transition cursor-pointer group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition duration-300">🛍️</div>
+                    <h3 class="text-xl font-bold mb-2">E-commerce</h3>
+                    <p class="text-slate-400 text-sm">Robust online stores powered by Shopify or WooCommerce that sell
+                        24/7.</p>
+                </div>
+
+                <div class="bg-slate-800 p-6 rounded-xl hover:bg-slate-700 transition cursor-pointer group">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition duration-300">⚙️</div>
+                    <h3 class="text-xl font-bold mb-2">Maintenance</h3>
+                    <p class="text-slate-400 text-sm">We keep your site secure, updated, and running smoothly while you
+                        focus on business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-16">How We Work</h2>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div
+                    class="hidden md:block absolute top-12 left-0 w-full h-1 bg-slate-200 -z-10 transform -translate-y-1/2">
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-white">
+                        1</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Plan & Strategy</h3>
+                    <p class="text-slate-600">We analyze your goals, competitors, and audience to create a blueprint for
+                        success.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-white">
+                        2</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Design & Build</h3>
+                    <p class="text-slate-600">We code your site using the latest technology, ensuring speed and
+                        pixel-perfect design.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm relative">
+                    <div
+                        class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-white">
+                        3</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Launch & Grow</h3>
+                    <p class="text-slate-600">We deploy your site to the world and provide support to help you scale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="text-2xl font-bold text-white tracking-tight">
+                        Sitelify<span class="text-brand-600">.in</span>
+                    </a>
+                    <p class="mt-4 max-w-sm">Empowering businesses with amazing, productive websites. Let's build
+                        something great together.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-brand-600 transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-brand-600 transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-brand-600 transition">Portfolio</a></li>
+                        <li><a href="#contact" class="hover:text-brand-600 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Connect</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-brand-600 transition">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition">Twitter</a></li>
+                        <li><a href="#" class="hover:text-brand-600 transition">Instagram</a></li>
+                        <li><a href="mailto:hello@sitelify.in"
+                                class="hover:text-brand-600 transition">hello@sitelify.in</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 Sitelify.in. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
