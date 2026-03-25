@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://unpkg.com/open-props/open-props.min.css");
+        @import url("https://unpkg.com/open-props/normalize.min.css");
+
+        @font-face {
+            font-family: "Geist Sans";
+            src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+        }
+
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --card-size: 260px;
+        }
+
+        html {
+            color-scheme: dark only;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            font-family: 'Geist Sans', sans-serif, system-ui;
+            width: 100vw;
+            overflow-x: hidden;
+            font-weight: 80;
+            background: #385697;
+        }
+
+        body::before {
+            --size: 45px;
+            --line: color-mix(in lch, canvasText, transparent 85%);
+            content: '';
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            background: linear-gradient(90deg,
+                    var(--line) 1px,
+                    transparent 1px var(--size)) 50% 50% / var(--size) var(--size),
+                linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+            mask: linear-gradient(-25deg, transparent 30%, white);
+            top: 0;
+            transform-style: flat;
+            pointer-events: none;
+        }
+
+        ul {
+            --width: 100vw;
+            width: var(--width);
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            display: grid;
+            place-items: center;
+            grid-auto-flow: column;
+            gap: 1rem;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+            /* padding: 0 calc((var(--width, 80vw) * 0.5) - (var(--card-size, 300px) * 0.5)); */
+        }
+
+        li {
+            scroll-snap-align: center;
+        }
+
+        article {
+            width: var(--card-size, 300px);
+            aspect-ratio: 3 / 4;
+            background: var(--surface-4);
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-3);
+            box-shadow:
+                var(--shadow-5),
+                0 1px inset white;
+        }
+
+        article::before {
+            content: "";
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            border-radius: var(--radius-3);
+            border: 6px solid hsl(0 0% 100% / 0.1);
+        }
+
+        /* .backdrop { */
+        article::after {
+            content: "";
+            z-index: -1;
+            position: absolute;
+            inset: 0;
+            filter: grayscale(0.5);
+            background-image: var(--bg);
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+        }
+
+        .word {
+            clip-path: inset(0 0 0 0);
+        }
+
+        span>span {
+            display: inline-block;
+        }
+
+        /* char:nth-of-type(1) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover calc(50% - 300px), cover 50%;
+	animation-end-delay: cover 50%, cover 70%;
+}
+.char:nth-of-type(2) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 31%, cover 51%;
+	animation-end-delay: cover 50%, cover 71%;
+}
+.char:nth-of-type(3) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 32%, cover 52%;
+	animation-end-delay: cover 50%, cover 72%;
+}
+.char:nth-of-type(4) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 33%, cover 53%;
+	animation-end-delay: cover 50%, cover 73%;
+}
+.char:nth-of-type(5) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 34%, cover 54%;
+	animation-end-delay: cover 50%, cover 74%;
+}
+.char:nth-of-type(6) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 35%, cover 55%;
+	animation-end-delay: cover 50%, cover 75%;
+}
+.char:nth-of-type(7) {
+	animation-timeline: --item;
+	animation: move-up both, move-out both;
+	animation-delay: cover 36%, cover 56%;
+	animation-end-delay: cover 50%, cover 76%;
+} */
+
+        /* @keyframes move-up {
+	to {
+		translate: 0 0;
+	}
+}
+@keyframes move-out {
+	to {
+		translate: 0 -100%;
+	}
+} */
+
+
+
+        a>span {
+            background: hsl(0 0% 0% / 0.4);
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+        }
+
+        span {
+            font-size: 2.5rem;
+            font-weight: 80;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            color: var(--gray-0);
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        @supports (animation-timeline: scroll()) {
+            @media (prefers-reduced-motion: no-preference) {
+                span>span {
+                    translate: 0 100%;
+                    animation: move-on-up both ease-in-out;
+                    animation-timeline: --item;
+                    animation-range: cover 40% cover 60%;
+                }
+
+                article {
+                    scale: 0.8;
+                    filter: grayscale(1);
+                    animation: colorify, scalify;
+                    animation-fill-mode: both;
+                    animation-timing-function: ease-in-out;
+                    view-timeline: --item inline;
+                    animation-timeline: view(inline);
+                    animation-range: cover 40% cover 60%;
+                }
+
+                article::after {
+                    animation: shift-bg both linear;
+                    animation-timeline: --item;
+                    animation-range: cover 40% cover 60%, contain;
+                }
+
+                @keyframes move-on-up {
+                    0% {
+                        translate: 0 100%;
+                    }
+
+                    50% {
+                        translate: 0 0;
+                    }
+
+                    100% {
+                        translate: 0 -100%;
+                    }
+                }
+
+                @keyframes colorify {
+                    50% {
+                        filter: grayscale(0);
+                    }
+                }
+
+                @keyframes scalify {
+                    50% {
+                        scale: 1;
+                        background-position: 100% 100%;
+                    }
+                }
+
+                @keyframes shift-bg {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+
+                    100% {
+                        background-position: 100% 50%;
+                    }
+                }
+            }
+        }
+
+
+        .bear-link {
+            color: canvasText;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            width: 48px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            opacity: 0.8;
+        }
+
+        :where(.x-link, .bear-link):is(:hover, :focus-visible) {
+            opacity: 1;
+        }
+
+        .bear-link svg {
+            width: 75%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a class="bear-link" href="https://twitter.com/intent/follow?screen_name=jh3yy" target="_blank"
+        rel="noreferrer noopener">
+        <svg class="w-9" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+            <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+            <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor"></circle>
+            <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor"></circle>
+            <path
+                d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z"
+                fill="currentColor"></path>
+            <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"></rect>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
+                fill="currentColor"></path>
+        </svg>
+    </a>
+    <main>
+        <ul>
+            <li>l
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=0);">
+                    <a href="#1" placeholder="x">
+                        <span><span class="word"><span> <img
+                                        src="https://i.pinimg.com/736x/09/19/ba/0919ba3ad4dea24f98e737bf53f5f0e5.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=1);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/17/e7/1a/17e71a4ac497e8fa027bd851e042acd8.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=2);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/02/aa/9b/02aa9b791461789a93fa5f72d7db03be.jpg"
+                                        alt="">
+                                </span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=3);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/8e/98/36/8e983652ef04a0ee785b0e7c6c62f052.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=4);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/80/82/45/8082458f3dae159942f7431320e78a99.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=5);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/3b/64/9a/3b649a7aa6f3e72118fccc58841c6773.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=6);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/fa/4f/aa/fa4faa4cc92a5940210d35174a6f52cc.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=7);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/d2/43/0c/d2430c7a2b9300e369ab9a2a47cb37d7.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=8);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/11/de/43/11de43e8b8cf404ba2b0cea43851da9a.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=9);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/8d/aa/13/8daa13976583e745739b57d005295e49.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=10);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/95/a5/df/95a5df16e76482f19908be09410d2b17.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=11);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/0c/73/0b/0c730b55708c51fecd9e5ac004b0f431.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=12);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/7b/2b/b4/7b2bb42940109db30da1f5f6669b750f.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=13);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/db/bc/52/dbbc52bfc6b73701a5a43cbf4374fcd6.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=14);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/b1/cc/55/b1cc554e9bb63cff50f044c7e522e557.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=15);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/736x/fd/2f/f7/fd2ff7cfcd3ef8c382dea73ec9cc4cf6.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=16);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/6c/4d/e5/6c4de508f47d44fb8c1ae0321a62bde1.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article style="--bg: url(https\:\/\/picsum\.photos\/600\/800\?random\=17);">
+                    <a href="#">
+                        <span><span class="word"><span><img
+                                        src="https://i.pinimg.com/1200x/bd/47/c0/bd47c0760714f23f983c348e781220d8.jpg"
+                                        alt=""></span></span></span>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </main>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
