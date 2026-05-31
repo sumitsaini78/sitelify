@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-<!-- sec com -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +8,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <script>
         tailwind.config = {
@@ -57,10 +57,56 @@
     height: 33vw;
 }
         
+        /* ---------------------------------------------------- */
+        /* PRELOADER WAVE BOUNCE STYLE BLOCK                   */
+        /* ---------------------------------------------------- */
+        @keyframes letterBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-22px);
+            }
+        }
+
+        .animate-bounce-letter {
+            display: inline-block;
+            animation: letterBounce 1.2s infinite ease-in-out;
+        }
+
+        /* Official Google Brand Color Palette Specs */
+        .g-blue { color: #4285F4; }
+        .g-red { color: #EA4335; }
+        .g-yellow { color: #FBBC05; }
+        .g-green { color: #34A853; }
+        
     </style>
 </head>
 
-<body class="font-sans text-slate-600 antialiased">
+<body class="font-sans text-slate-600 antialiased overflow-hidden">
+
+    <div id="preloader" class="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-slate-900 transition-opacity duration-500 ease-out">
+        <div class="flex space-x-1.5 text-5xl md:text-7xl font-extrabold tracking-wider selection:bg-transparent">
+            <!-- <span class="animate-bounce-letter g-blue" style="animation-delay: 0.0s;">W</span>
+            <span class="animate-bounce-letter g-red" style="animation-delay: 0.1s;">e</span>
+            <span class="animate-bounce-letter g-yellow" style="animation-delay: 0.2s;">l</span>
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.3s;">c</span>
+            <span class="animate-bounce-letter g-green" style="animation-delay: 0.4s;">o</span>
+            <span class="animate-bounce-letter g-red" style="animation-delay: 0.5s;">m</span>
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.6s;">e</span> -->
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.0s;">S</span>
+            <span class="animate-bounce-letter g-red" style="animation-delay: 0.1s;">i</span>
+            <span class="animate-bounce-letter g-yellow" style="animation-delay: 0.2s;">t</span>
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.3s;">e</span>
+            <span class="animate-bounce-letter g-green" style="animation-delay: 0.4s;">l</span>
+            <span class="animate-bounce-letter g-red" style="animation-delay: 0.5s;">i</span>
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.6s;">f</span>
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.7s;">y</span> 
+            <span class="animate-bounce-letter g-blue" style="animation-delay: 0.7s;">.in </span> 
+    
+        </div>
+        <p class="text-slate-400 text-xs tracking-widest font-semibold mt-8 uppercase opacity-60 animate-pulse"></p>
+    </div>
 
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,7 +127,7 @@
                     <a href="#process" class="text-slate-600 hover:text-brand-600 font-medium transition">Process</a>
                     <a href="#contact"
                         class="bg-brand-600 redirect hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg font-semibold transition shadow-lg shadow-brand-600/20">
-                        Get Started
+                        Get Consult <sup>Free</sup>
                     </a>
                 </div>
 
@@ -100,7 +146,7 @@
             <a href="#home" class="block text-slate-600 font-medium">Home</a>
             <a href="#features" class="block text-slate-600 font-medium">Why Us</a>
             <a href="#services" class="block text-slate-600 font-medium">Services</a>
-            <a href="#contact" class="block text-brand-600 font-bold redirect">Get Started</a>
+            <a href="#contact" class="block text-brand-600 font-bold redirect">Free Consult</a>
         </div>
     </nav>
 
@@ -125,11 +171,7 @@
                         class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-3.5 rounded-lg font-bold text-lg transition shadow-xl shadow-brand-600/30">
                         Book Consultation
                     </a>
-                    <!-- <a href="#portfolio"
-                        class="bg-white border border-slate-300 hover:border-brand-600 text-slate-700 hover:text-brand-600 px-8 py-3.5 rounded-lg font-bold text-lg transition">
-                        View Our Work 
-                    </a> -->
-                </div>
+                    </div>
                 <div
                     class="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-slate-500 font-medium">
                     <span class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-1" fill="currentColor"
@@ -155,9 +197,6 @@
 
             <div class="lg:w-1/2 relative">
                 <div class="absolute -inset-4 bg-brand-600/10 rounded-2xl blur-2xl transform rotate-3"></div>
-                <!-- <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                    alt="Web Development Coding"
-                    class="relative rounded-2xl shadow-2xl border border-slate-200 w-full object-cover"> -->
                 <img src="/11250233_1249.jpg" class="bor-rad-23   aspect-crop">
             </div>
         </div>
@@ -317,7 +356,7 @@ height="22vw"
                     <a href="#" class="text-2xl font-bold text-white tracking-tight">
                         Sitelify<span class="text-brand-600">.in</span>
                     </a>
-                    <p class="mt-4 max-w-sm">Empowering businesses with amazing, productive websites. Let's build
+                    <p class="mt-4 max-w-sm">Empowering businesses with amazing, productive Solutions. Let's build
                         something great together.</p>
                 </div>
                 <div>
@@ -325,18 +364,15 @@ height="22vw"
                     <ul class="space-y-2">
                         <li><a href="#home" class="hover:text-brand-600 transition">Home</a></li>
                         <li><a href="#services" class="hover:text-brand-600 transition">Services</a></li>
-                        <li><a href="#portfolio" class="hover:text-brand-600 transition">Portfolio</a></li>
-                        <li><a href="#contact" class="hover:text-brand-600 transition">Contact</a></li>
-                    </ul>
+                        </ul>
                 </div>
                 <div>
                     <h4 class="text-white font-bold mb-4">Connect</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-brand-600 transition">LinkedIn</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition">Twitter</a></li>
-                        <li><a href="#" class="hover:text-brand-600 transition">Instagram</a></li>
-                        <li><a href="mailto:hello@sitelify.in"
-                                class="hover:text-brand-600 transition">hello@sitelify.in</a></li>
+                        <li><a href="tel:+919876543210"><i class="fa-solid fa-phone"></i>+91 6397463575</a></li>
+                        <li><a href="https://wa.me/+916397463575"> <i class="fa-brands fa-whatsapp"></i>WhatsApp </a></li>
+                        <li><a href="https://www.instagram.com/sumit_saini2001?igsh=MXh3NjUzbmVqcjFneQ==" class="hover:text-brand-600 transition"><i class="fa-brands fa-instagram"></i> Instagram - sumit_saini2001</a></li>
+                        <li><a href="mailto:sumitlobhyaan7310@gmail.com"><i class="fa-regular fa-envelope"></i>  sumitlobhyaan7310@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -392,7 +428,6 @@ height="22vw"
             </div>
         </div>
     </div>
-    <!-- a tag for whatsapp btn -->
     <a href="https://wa.me/+916397463575" target="_blank"
         class="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 group"
         aria-label="Contact us on WhatsApp">
@@ -405,7 +440,24 @@ height="22vw"
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.434 5.627 1.435h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
         </svg>
     </a>
+    
     <script>
+        // ---------------------------------------------------- 
+        // PRELOADER ENGINE CONTROL LOGIC                       
+        // ---------------------------------------------------- 
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            
+            // Initiate opacity transition
+            preloader.classList.add('opacity-0');
+            
+            // Destroy layout presence and return viewport control safely
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                document.body.classList.remove('overflow-hidden');
+            }, 500); 
+        });
+
         // code for enquiry form 
         function toggleModal() {
             const modal = document.getElementById('contact-modal');
@@ -429,8 +481,6 @@ height="22vw"
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
-
-
     </script>
 
 </body>
